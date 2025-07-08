@@ -4,6 +4,7 @@ import Header from './Components/Header';
 import Slidebar from './Components/Slidebar';
 import Starting from './Components/Loan-product/Starting';
 import Four_heros from './Components/Loan-product/Four_heros';
+import RepaymentDashboard from './Components/Repayment/RepaymentDashboard'; 
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -75,19 +76,20 @@ function App() {
               }
             />
 
-            <Route
-              path="/repayment-management"
-              element={
-                <>
-                  <Starting
-                    heading="Repayment Management"
-                    description="Track and manage loan repayments."
-                  />
-                </>
+            
+<Route
+  path="/repayment-management"
+  element={
+    <>
+      <Starting
+        heading="Repayment Management"
+        description="Track and manage loan repayments."
+      />
+      <RepaymentDashboard /> {/* ✅ Add this */}
+    </>
+  }
+/>
 
-
-              }
-            />
 
             <Route
               path="/reports-and-analytics"
