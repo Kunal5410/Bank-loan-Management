@@ -11,7 +11,7 @@ public class Repayment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long repaymentId;
 
-    private Long applicationId; // FK to LoanApplication
+    private Long applicationId;
 
     private LocalDate dueDate;
     private BigDecimal amountDue;
@@ -25,4 +25,52 @@ public class Repayment {
     }
 
     // Getters and Setters
+
+    public Long getRepaymentId() {
+        return repaymentId;
+    }
+
+    public void setRepaymentId(Long repaymentId) {
+        this.repaymentId = repaymentId;
+    }
+
+    public Long getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(Long applicationId) {
+        this.applicationId = applicationId;
+    }
+
+    public LocalDate getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(LocalDate dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public BigDecimal getAmountDue() {
+        return amountDue;
+    }
+
+    public void setAmountDue(BigDecimal amountDue) {
+        this.amountDue = amountDue;
+    }
+
+    public LocalDate getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(LocalDate paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
+    public PaymentStatus getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
 }
