@@ -13,3 +13,16 @@
     width: 20vw;
   }
 }
+
+#cart{
+ 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 34vw;
+
+}
+@media (max-width: 990px) {
+  #cart {
+    width: 44vw;
+  }
+}

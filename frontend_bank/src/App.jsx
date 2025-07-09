@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './Components/Header';
 import Slidebar from './Components/Slidebar';
 import Starting from './Components/Loan-product/Starting';
-import Four_heros from './Components/Loan-product/Four_heros';
-import RepaymentDashboard from './Components/Repayment/RepaymentDashboard'; 
+import RepaymentDashboard from './Components/Repayment/RepaymentDashboard';
+import Loan_product_dashboard from './Components/Loan-product/Loan_product_dashboard';
 
-function App() {
+function AppContent() {
   const [isMobile, setIsMobile] = useState(false);
+  const location = useLocation();
+  const isRootPath = location.pathname === '/';
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,93 +21,89 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <div className="d-flex">
-        {!isMobile && <Slidebar />}
+    <div className="d-flex">
+      {!isMobile && !isRootPath && <Slidebar />}
+      <div style={{ flex: 1 }}>
+        {isMobile && !isRootPath && <Header />}
 
-        <div style={{ flex: 1 }}>
-          {isMobile && <Header />}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Starting
+                heading="/"
+                description="Overview of bank operations and metrics."
+              />
+            }
+          />
 
-          <Routes>
-            <Route
-              path="/dashboard"
-              element={
-                <>
-                  <Starting
-                    heading="Dashboard"
-                    description="Overview of bank operations and metrics." />
+          <Route
+            path="/dashboard"
+            element={
+              <Starting
+                heading="Dashboard"
+                description="Overview of bank operations and metrics."
+              />
+            }
+          />
 
-                </>
-              }
-            />
+          <Route
+            path="/customer-management"
+            element={
+              <Starting
+                heading="Customer Management"
+                description="Manage customer profiles and accounts."
+              />
+            }
+          />
 
-            <Route
-              path="/customer-management"
-              element={
-                <>
-                  <Starting
-                    heading="Customer Management"
-                    description="Manage customer profiles and accounts."
-                  />
-                </>
-              }
-            />
+          <Route
+            path="/loan-product-management"
+            element={<Loan_product_dashboard />}
+          />
 
-            <Route
-              path="/loan-product-management"
-              element={
-                <>
-                  <Starting
-                    heading="Loan Product Management"
-                    description="Configure and manage loan products offered by the bank."
-                  />
-                  <Four_heros/>
-                </>
-              }
-            />
+          <Route
+            path="/loan-application-management"
+            element={
+              <Starting
+                heading="Loan Application Management"
+                description="Review and process loan applications."
+              />
+            }
+          />
 
-            <Route
-              path="/loan-application-management"
-              element={
-                <>
-                  <Starting
-                    heading="Loan Application Management"
-                    description="Review and process loan applications."
-                  />
-                </>
-              }
-            />
+          <Route
+            path="/repayment-management"
+            element={
+              <div>
+                <Starting
+                  heading="Repayment Management"
+                  description="Track and manage loan repayments."
+                />
+                <RepaymentDashboard />
+              </div>
+            }
+          />
 
-            
-<Route
-  path="/repayment-management"
-  element={
-    <>
-      <Starting
-        heading="Repayment Management"
-        description="Track and manage loan repayments."
-      />
-      <RepaymentDashboard /> {/* ✅ Add this */}
-    </>
-  }
-/>
-
-
-            <Route
-              path="/reports-and-analytics"
-              element={
-                <>
-                  <Starting
-                    heading="Reports and Analytics"
-                    description="View performance reports and analytics."
-                  />
-                </>
-              }
-            />
-
-          </Routes>
-        </div>
+          <Route
+            path="/reports-and-analytics"
+            element={
+              <Starting
+                heading="Reports and Analytics"
+                description="View performance reports and analytics."
+              />
+            }
+          />
+        </Routes>
       </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

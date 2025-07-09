@@ -14,7 +14,7 @@ const LoanTable = ({ loans, onMakeRepayment }) => {
             <th>Balance</th>
             <th>Due Date</th>
             <th>Status</th>
-            <th>Action</th> {/* New column */}
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -28,10 +28,15 @@ const LoanTable = ({ loans, onMakeRepayment }) => {
               <td>${loan.balance}</td>
               <td>{loan.dueDate}</td>
               <td>
-                <span className={`badge ${
-                  loan.status === 'DUE' ? 'bg-danger' :
-                  loan.status === 'PAID' ? 'bg-success' : 'bg-secondary'
-                }`}>
+                <span
+                  className={`badge ${
+                    loan.status === 'DUE'
+                      ? 'bg-danger'
+                      : loan.status === 'PAID'
+                      ? 'bg-success'
+                      : 'bg-secondary'
+                  }`}
+                >
                   {loan.status}
                 </span>
               </td>
