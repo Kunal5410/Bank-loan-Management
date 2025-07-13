@@ -5,6 +5,8 @@ import Slidebar from './Components/Slidebar';
 import Starting from './Components/Loan-product/Starting';
 import RepaymentDashboard from './Components/Repayment/RepaymentDashboard';
 import Loan_product_dashboard from './Components/Loan-product/Loan_product_dashboard';
+import Login_page from './Components/Login/Login_page';
+import Four_heros from './Components/Loan-product/Four_heros';
 
 function AppContent() {
   const [isMobile, setIsMobile] = useState(false);
@@ -30,10 +32,11 @@ function AppContent() {
           <Route
             path="/"
             element={
-              <Starting
-                heading="/"
-                description="Overview of bank operations and metrics."
-              />
+              // <Starting
+              //   heading="/"
+              //   description="Overview of bank operations and metrics."
+              // />
+              <Login_page/>
             }
           />
 
@@ -88,10 +91,14 @@ function AppContent() {
           <Route
             path="/reports-and-analytics"
             element={
+              <>
               <Starting
                 heading="Reports and Analytics"
                 description="View performance reports and analytics."
               />
+             
+              </>
+
             }
           />
         </Routes>
