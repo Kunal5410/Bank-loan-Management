@@ -7,6 +7,7 @@ import RepaymentDashboard from './Components/Repayment/RepaymentDashboard';
 import Loan_product_dashboard from './Components/Loan-product/Loan_product_dashboard';
 import Login_page from './Components/Login/Login_page';
 import Summary from './Components/Loan Application/Summary';
+import LoanDashboard from './Components/Loan Application/LoanDashBoard';
 
 function AppContent() {
   const [isMobile, setIsMobile] = useState(false);
@@ -70,6 +71,7 @@ function AppContent() {
                 description="Review and process loan applications."
               />
               <Summary/>
+              <LoanDashboard/>
               </>
             }
           />
