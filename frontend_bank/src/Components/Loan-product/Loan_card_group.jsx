@@ -1,9 +1,42 @@
-import React from 'react';
 import Loan_card from './Loan_card';
+import React from 'react';
 
-function Loan_card_group() {
+
+function Loan_card_group(props) {
+    const { loans } = props;
+    
+
+
+    // const[loans,setloans]=useState([]);
+
+    // useEffect(()=>{
+    //     axios.get("http://localhost:8081/loans")
+    //     .then(res =>{setloans(res.data); })
+    //     .catch(error =>{
+    //         console.error(error);
+    //     } );
+
+    // },[]) ;   
+
     return (
         <div className='d-flex flex-wrap gap-3'>
+            {loans.map((loan,index)=>(
+                
+                <Loan_card
+                key={index}
+                Loan_name={`${loan.productName} Loan`}
+                bg={loan.status=== "Active" ? "success" : "danger"}
+                bg_status={loan.status}
+                rate={`${loan.interestRate}%`}
+                range={`$${loan.minAmount} - $${loan.maxAmount}`}
+                month={`${loan.tenure} months`}
+                number={loan.application}
+                
+                />
+            ))}
+
+            {/* { This code is for static output
+            
             <Loan_card
                 Loan_name={"Personal Loan"}
                 bg={"success"}
@@ -42,7 +75,7 @@ function Loan_card_group() {
                 range={"$5,00 - $300,0"}
                 month={"60 months"}
                 number={"30"}
-            />
+            /> } */}
 
         </div>
     )
